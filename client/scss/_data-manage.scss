@@ -1,0 +1,25 @@
+.data-cards {
+    overflow: hidden;
+    .cards-place {
+        transition: all 0.15s $easeInOutNew;
+        @include transform(translateZ(0));
+        background: $theme-primary-500;
+    }
+    .cards-move {
+        position: absolute;
+        width: 100%;
+        bottom: -48px;
+        left: 0;
+        background: $theme-primary-700;
+        transition: all 0.15s $easeInOutNew;
+        transform: translateZ(0);
+    }
+    &:hover {
+        .cards-place {
+            @include transform(translateY(-20px) translateZ(0));
+        }
+        .cards-move {
+            @include transform(translateY(-48px) translateZ(0));
+        }
+    }
+}
