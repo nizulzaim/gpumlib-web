@@ -6,7 +6,7 @@ export const Data = new FilesCollection({
     collectionName: 'Data',
     allowClientCode: false, // Disallow remove files from Client
     // debug: true,
-    // storagePath: '/images',
+    storagePath: 'C:\\serverDatas',
     // permissions: 0774,
     // parentDirPermissions: 0774,
     collectionName: 'Data',

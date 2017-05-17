@@ -1,0 +1,32 @@
+{
+  "_id": "J8DB2dKkX9P9rteJD",
+  "size": 182121,
+  "type": "text/plain",
+  "name": "somInput2.txt",
+  "meta": {},
+  "ext": "txt",
+  "extension": "txt",
+  "extensionWithDot": ".txt",
+  "mime": "text/plain",
+  "mime-type": "text/plain",
+  "userId": "iFqfhG5KMqKP65rHv",
+  "path": "C:\\serverDatas\\J8DB2dKkX9P9rteJD.txt",
+  "versions": {
+    "original": {
+      "path": "C:\\serverDatas\\J8DB2dKkX9P9rteJD.txt",
+      "size": 182121,
+      "type": "text/plain",
+      "extension": "txt"
+    }
+  },
+  "_downloadRoute": "/cdn/storage",
+  "_collectionName": "Data",
+  "isVideo": false,
+  "isAudio": false,
+  "isImage": false,
+  "isText": true,
+  "isJSON": false,
+  "isPDF": false,
+  "_storagePath": "C:\\serverDatas",
+  "public": false
+}

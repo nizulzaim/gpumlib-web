@@ -4,11 +4,13 @@ import AppLayout from '/imports/client/views/AppLayout.vue';
 import VueHead from 'vue-head';
 import VueHighlightJS from 'vue-highlight.js';
 import ViuUI from 'meteor/devsignstudio:viu-ui';
+import VueMoment  from "vue-moment";
 import 'highlight.js/styles/monokai.css';
 
 Vue.use(VueHighlightJS);
 Vue.use(VueHead);
 Vue.use(ViuUI);
+Vue.use(VueMoment);
 Vue.config.debug = true;
 Vue.config.devtools = true;
 

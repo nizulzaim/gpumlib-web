@@ -1,3 +1,12 @@
 @import "{devsignstudio:viu-ui}/import.scss";
 @import "theme";
 @import "data-manage";
+
+.viu-textfield.is-info {
+    margin: 0;
+    padding-bottom: 0;
+    input {
+        border-bottom: 0;
+        color: $color-grey-900;
+    }
+}

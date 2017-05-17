@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="font-headline font-light font-center color-white" v-if="meta.data()">
                                         <div class="font-subhead font-thin no-margin">Data Size</div>
-                                        {{(meta.data().size / 1000000).toFixed(0)}} MB
+                                        {{meta.stringSize()}}
                                     </div>
                                     <!--<div class="font-display3 font-center">
                                         <div class="font-subhead font-thin no-margin">Uploading</div>
@@ -62,7 +62,7 @@
             </div>
         </page-container>
     
-        <reveal v-model="uploadNewData" :enable-overlay-click="false">
+        <reveal v-model="uploadNewData">
             <div class="col-md-fluid-8">
                 <cards v-depth="2">
                     <cards-content class="background-theme">
@@ -70,28 +70,7 @@
                         <div class="color-white font-center">You can upload new data CSV or TXT format. The last column of data is the expected result</div>
                     </cards-content>
                     <cards-content-scrollbar>
-                        <!--<div class="row has-gutter">
-                                <div class="col-xs-fluid-12">
-                                    <textfield v-model="bmi.weight" placeholder="Weight (kg)"></textfield>
-                                </div>
-                                <div class="col-xs-fluid-12">
-                                    <textfield v-model="bmi.height" placeholder="Height (cm)"></textfield>
-                                </div>
-                            </div>-->
-                            <input ref="fileInput" type="file" />
-                            <!--<div>
-                                Uploading <b>{{currentUpload.curValue.file.name}}</b>
-                                <span id="progress">{{currentUpload.curValue.progress.get()}}%</span>
-                            </div>
-                            <div v-else>
-                                
-                            </div>-->
-                        <!--<span id="progress">{{progress.get}}%</span>-->
-                        
-                        <!--<dropdown-select v-model="dataType" label="Data Type">
-                                <menu-option value="0">Training</menu-option>
-                                <menu-option value="1">Testing</menu-option>
-                            </dropdown-select>-->
+                        <input ref="fileInput" type="file" />
                         <textfield v-model="dataname" placeholder="Data Name"></textfield>
                     </cards-content-scrollbar>
                     <divider></divider>
@@ -126,13 +105,13 @@
             }
         },
         mounted() {
-            console.log(this.currentUpload);
-            var client = new XMLHttpRequest();
-            client.open('GET', 'http://localhost:3000/cdn/storage/Images/nvSYhNwSDWtEmBaTs/original/nvSYhNwSDWtEmBaTs.txt');
-            client.onreadystatechange = function() {
-                console.log(client.responseText);
-            }
-            client.send();
+            // console.log(this.currentUpload);
+            // var client = new XMLHttpRequest();
+            // client.open('GET', 'http://localhost:3000/cdn/storage/Images/nvSYhNwSDWtEmBaTs/original/nvSYhNwSDWtEmBaTs.txt');
+            // client.onreadystatechange = function() {
+            //     console.log(client.responseText);
+            // }
+            // client.send();
             
         },
         methods: {
@@ -154,8 +133,8 @@
                     }, false);
     
                     upload.on('start',function() {
-                        self.uploadNewData = false;
                         setTimeout(()=> {
+                            self.uploadNewData = false;
                             self.currentUpload.set(this);
                             self.showCardsUploader = true;
                         }, 300);
@@ -174,8 +153,11 @@
                             });
                             
                         }
-                        this.currentUpload.set(false);
-                        self.showCardsUploader = false;
+                        setTimeout(()=> {
+                            this.currentUpload.set(false);
+                            self.showCardsUploader = false;
+                        }, 1000)  
+                        
                     });
                     upload.start();
                 }

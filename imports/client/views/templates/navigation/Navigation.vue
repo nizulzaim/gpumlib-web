@@ -10,5 +10,15 @@
                 <icon name="home"></icon> Data Management
             </nav-list>
         </router-link>
+        <router-link to="/dashboard/som-run" exact>
+            <nav-list class="nav-item">
+                <icon name="run"></icon> SOM Run
+            </nav-list>
+        </router-link>
+        <router-link to="/dashboard/som-history" exact>
+            <nav-list class="nav-item">
+                <icon name="run"></icon> SOM History
+            </nav-list>
+        </router-link>
     </scroll-bar>
 </template>
