@@ -1,6 +1,7 @@
 <template>
     <div class="appbar-padding">
         <page-container>
+            
             <div class="row has-gutter">
                 <div class="col-lg-fluid-4" v-if="!showCardsUploader">
                     <div @click="showUpload">

@@ -15,6 +15,7 @@ let SomRun = function(_id, clientStart, serverStart) {
                 console.log(err);
                 return;
             }
+            let serverFinish = new Date();
             // console.log(data);
             function strtok(src, delim){
                 delim_escaped = new RegExp('[' + delim.replace(/[\[\]\(\)\*\+\?\.\\\^\$\|\#\-\{\}\/]/g, "\\$&") + ']', 'g');
@@ -43,12 +44,13 @@ let SomRun = function(_id, clientStart, serverStart) {
                 })
                 map.push(tempLine);
             }
-
-            console.log(map);
+            
+            // console.log(map);
             let results = {
                 clientStart,
                 serverStart,
                 serverRun,
+                serverFinish,
                 executionTime,
                 resultString: data,
                 map,

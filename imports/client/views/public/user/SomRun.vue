@@ -61,20 +61,20 @@
                             <div class="col-xs-fluid-12">
                                 <textfield v-model="configCurrent.typeName" placeholder="Run Type" :is-info="true"></textfield>
                             </div>
-                            <div class="col-xs-fluid-8">
+                            <div class="col-xs-fluid-12">
                                 <textfield v-model="configCurrent.samples" placeholder="# Samples" :is-info="true"></textfield>
                             </div>
-                            <div class="col-xs-fluid-8">
+                            <div class="col-xs-fluid-12">
                                 <textfield v-model="configCurrent.features" placeholder="# Features" :is-info="true"></textfield>
                             </div>
-                            <div class="col-xs-fluid-8">
-                                <textfield v-model="configCurrent.iterations" placeholder="Number of Iterations" :is-info="true"></textfield>
-                            </div>
-                            <div class="col-xs-fluid-4">
+                            <div class="col-xs-fluid-12">
                                 <textfield v-model="configCurrent.x" placeholder="Map X" :is-info="true"></textfield>
                             </div>
-                            <div class="col-xs-fluid-4">
+                            <div class="col-xs-fluid-12">
                                 <textfield v-model="configCurrent.y" placeholder="Map Y" :is-info="true"></textfield>
+                            </div>
+                            <div class="col-xs-fluid-12">
+                                <textfield v-model="configCurrent.iterations" placeholder="Number of Iterations" :is-info="true"></textfield>
                             </div>
                             <divider></divider>
                             <div class="col-xs-fluid-12">
@@ -104,6 +104,7 @@
                     <divider></divider>
                     <cards-action class="cards-content">
                         <div class="pull-right">
+                            <router-link to="/dashboard/som-history"></router-link>
                             <color-button class="primary" v-ripple="">Next</color-button>
                         </div>
                     </cards-action>
@@ -148,11 +149,11 @@
                     r.serverStartDT = Moment(r.serverStart).format("DD-MM-YYYY HH:mm:ss:SSS");
                     r.serverRunDT = Moment(r.serverRun).format("DD-MM-YYYY HH:mm:ss:SSS");
                     r.serverFinishDT = Moment(r.serverRun).add(r.executionTime * 1000, 'milliseconds').format("DD-MM-YYYY HH:mm:ss:SSS");
-                    r.execTime = r.executionTime.toFixed(2) + " seconds";
+                    r.execTime = ((Number(r.serverFinish) - Number(r.serverRun)) / 1000).toFixed(2) + " seconds";
                     r.overallTime = (Number(r.clientReceived) - Number(r.clientStart)) / 1000 + " seconds";
 
                     if (r.executionTime >= 60) {
-                        r.execTime = (r.executionTime/60).toFixed(2) + " minutes";
+                        r.execTime = (((Number(r.serverFinish) - Number(r.serverRun)) / 1000) /60).toFixed(2) + " minutes";
                     }
 
                     if ((Number(r.clientReceived) - Number(r.clientStart)) / 1000 >= 60) {
@@ -183,8 +184,9 @@
                 let som = new SOM();
                 let clientStartDate = new Date();
                 som.callMethod("run", this.passData, clientStartDate, (err, result) => {
-                    this.$refs.loader.disable();
+                    
                     if (err) {
+                        this.$refs.loader.disable();
                         this.disabledButton = false;
                         return this.$snackbar.run(err.reason, () => {}, "OK", "error");
                     }
@@ -206,6 +208,7 @@
             setClientReceivedDate() {
                 let som = SOM.findOne();
                 som.callMethod("clientReceivedDate", new Date(), (err, result) => {
+                    this.$refs.loader.disable();
                     if (err) {
                         this.disabledButton = false;
                         return this.$snackbar.run("Error sending Received Date", () => {}, "OK", "error");

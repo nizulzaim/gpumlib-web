@@ -7,7 +7,7 @@
         </router-link>
         <router-link to="/dashboard/data-manage" exact>
             <nav-list class="nav-item">
-                <icon name="home"></icon> Data Management
+                <icon name="database"></icon> Data Management
             </nav-list>
         </router-link>
         <router-link to="/dashboard/som-run" exact>
@@ -17,7 +17,7 @@
         </router-link>
         <router-link to="/dashboard/som-history" exact>
             <nav-list class="nav-item">
-                <icon name="run"></icon> SOM History
+                <icon name="history"></icon> SOM History
             </nav-list>
         </router-link>
     </scroll-bar>

@@ -16,6 +16,7 @@ export const RunResult = Class.create({
         clientReceived: {type: Date, optional: true},
         serverStart: Date,
         serverRun: Date,
+        serverStop: Date,
         executionTime: Number,
         resultString: String,
         map: [Array],
